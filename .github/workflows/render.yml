@@ -1,0 +1,44 @@
+name: Render comparison
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  scenes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        scene: [sol-low, sol-medium, sol-xhigh, astra-xhigh]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --package-lock=false playwright-core@1.55.0
+      - run: npx playwright-core install chromium --only-shell
+      - run: node render/capture.mjs "${{ matrix.scene }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frames-${{ matrix.scene }}
+          path: frames/${{ matrix.scene }}/
+          retention-days: 2
+  film:
+    needs: scenes
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frames-*
+          path: frames
+      - run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg python3-pil fonts-dejavu-core
+      - run: /usr/bin/python3 render/compose.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: comparison-media
+          path: media/
+          retention-days: 14
