@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sol-low",
+    "browser": "157.0.8103.78",
+    "backend": "WebGL"
+  },
+  {
+    "id": "sol-medium",
+    "browser": "157.0.8103.78",
+    "backend": "WebGL"
+  },
+  {
+    "id": "sol-xhigh",
+    "browser": "157.0.8103.78",
+    "backend": "WebGL"
+  },
+  {
+    "id": "astra-xhigh",
+    "browser": "157.0.8103.78",
+    "backend": "WebGL"
+  }
+]

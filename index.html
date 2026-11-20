@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10232b">
+  <meta name="description" content="Explore four model-built versions of Stillwater Cape. Compare SOL and ASTRA at golden hour, dawn and night, or open the original interactive scenes.">
+  <meta property="og:title" content="Stillwater Cape · Model comparison">
+  <meta property="og:description" content="Four interactive takes on the same cape. See SOL and ASTRA side by side.">
+  <meta property="og:image" content="https://maitham16.github.io/stillwater-cape-comparison/media/film-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Stillwater Cape · Model comparison</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip" href="#compare">Skip to comparison</a>
+  <header class="mast">
+    <div class="wrap mast-inner">
+      <span class="mast-label">Model comparison</span>
+      <nav aria-label="Main navigation">
+        <a href="#film">Film</a>
+        <a href="https://github.com/Maitham16/stillwater-cape-comparison">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <header class="intro">
+      <div>
+        <h1>Stillwater Cape</h1>
+        <p>One lighthouse, one sailboat, four views of the cape. Compare three SOL 6.2 effort settings with ASTRA 6.2 at XHIGH.</p>
+      </div>
+    </header>
+    <section id="compare" aria-label="Compare the four scenes">
+      <div class="toolbar">
+        <h2>Compare scenes</h2>
+        <div class="tools">
+        <button id="live" type="button" aria-pressed="false" hidden>Live grid</button>
+        <div class="presets" role="group" aria-label="Lighting for all four previews" hidden>
+          <button data-mode="gold" aria-pressed="true">Golden hour</button>
+          <button data-mode="dawn" aria-pressed="false">Dawn</button>
+          <button data-mode="night" aria-pressed="false">Night</button>
+        </div>
+        </div>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="stage"><a class="scene" href="./scenes/sol-low.html" aria-label="Open SOL LOW interactive scene" tabindex="-1"><img src="./media/sol-low-gold.jpg" width="960" height="540" data-scene="sol-low" alt="SOL LOW rendering of Stillwater Cape at golden hour"></a></div>
+          <div class="caption"><h3>SOL <span>LOW</span></h3><a class="open" href="./scenes/sol-low.html" aria-label="Open SOL LOW interactive scene">Open scene</a></div>
+          <p class="observation">A broad, smooth cliff fills the view. At night, the pale moon sits just above the striped tower.</p>
+        </article>
+        <article class="card">
+          <div class="stage"><a class="scene" href="./scenes/sol-medium.html" aria-label="Open SOL MEDIUM interactive scene" tabindex="-1"><img src="./media/sol-medium-gold.jpg" width="960" height="540" data-scene="sol-medium" alt="SOL MEDIUM rendering of Stillwater Cape at golden hour"></a></div>
+          <div class="caption"><h3>SOL <span>MEDIUM</span></h3><a class="open" href="./scenes/sol-medium.html" aria-label="Open SOL MEDIUM interactive scene">Open scene</a></div>
+          <p class="observation">The near sail fills the foreground and a gull passes close overhead, with pointed evergreens behind the lighthouse.</p>
+        </article>
+        <article class="card">
+          <div class="stage"><a class="scene" href="./scenes/sol-xhigh.html" aria-label="Open SOL XHIGH interactive scene" tabindex="-1"><img src="./media/sol-xhigh-gold.jpg" width="960" height="540" data-scene="sol-xhigh" alt="SOL XHIGH rendering of Stillwater Cape at golden hour"></a></div>
+          <div class="caption"><h3>SOL <span>XHIGH</span></h3><a class="open" href="./scenes/sol-xhigh.html" aria-label="Open SOL XHIGH interactive scene">Open scene</a></div>
+          <p class="observation">Gray seams run across the exposed cliff face. Watch how much of that rock texture stays visible at night.</p>
+        </article>
+        <article class="card">
+          <div class="stage"><a class="scene" href="./scenes/astra-xhigh.html" aria-label="Open ASTRA XHIGH interactive scene" tabindex="-1"><img src="./media/astra-xhigh-gold.jpg" width="960" height="540" data-scene="astra-xhigh" alt="ASTRA XHIGH rendering of Stillwater Cape at golden hour"></a></div>
+          <div class="caption"><h3>ASTRA <span>XHIGH</span></h3><a class="open" href="./scenes/astra-xhigh.html" aria-label="Open ASTRA XHIGH interactive scene">Open scene</a></div>
+          <p class="observation">Sunlight shines through the sail. At night, the lantern and cottage windows stand out against the dark island.</p>
+        </article>
+      </div>
+    </section>
+    <section id="film" aria-labelledby="film-title">
+      <div class="film-heading">
+        <div>
+          <h2 id="film-title">The comparison film</h2>
+          <p>Fifteen seconds, three lighting presets. Each scene keeps its own camera movement.</p>
+        </div>
+        <a class="download" href="./media/stillwater-cape.mp4" download>Download MP4</a>
+      </div>
+      <video controls playsinline preload="none" poster="./media/film-cover.jpg" aria-label="Four labeled scenes cycling through golden hour, dawn and night. Silent film.">
+        <source src="./media/stillwater-cape.mp4" type="video/mp4">
+        <a href="./media/stillwater-cape.mp4">Open the comparison film</a>
+      </video>
+    </section>
+    <section class="method" aria-labelledby="method-title">
+      <h2 id="method-title">How to read this comparison</h2>
+      <p>Each panel shows one supplied HTML file. All four were captured at 960 × 540 with the same animation clock. Open a scene to try its orbit, zoom and lighting controls. The original prompt and run settings are pending.</p>
+    </section>
+  </main>
+  <script src="./compare.js"></script>
+</body>
+</html>
