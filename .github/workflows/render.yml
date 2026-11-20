@@ -1,9 +1,17 @@
 name: Render comparison
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      frames_run:
+        description: 'Optional completed run ID to re-edit its existing scene captures'
+        required: false
+        type: string
 permissions:
   contents: read
+  actions: read
 jobs:
   scenes:
+    if: inputs.frames_run == ''
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     strategy:
@@ -25,12 +33,15 @@ jobs:
           retention-days: 2
   film:
     needs: scenes
+    if: always() && (needs.scenes.result == 'success' || (inputs.frames_run != '' && needs.scenes.result == 'skipped'))
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ inputs.frames_run || github.run_id }}
           pattern: frames-*
           path: frames
       - run: |

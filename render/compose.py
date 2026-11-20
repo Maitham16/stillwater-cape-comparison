@@ -52,8 +52,10 @@ with subprocess.Popen(cmd, stdin=subprocess.PIPE) as enc:
         draw.text((1408, 46), 'Model comparison', font=meta, fill=MUTED, anchor='ra')
         draw.line((32, 107, 1408, 107), fill='#3b4b51', width=2)
         for (scene, model, effort), (x, y) in zip(SCENES, positions):
-            draw.text((x, y - 47), model, font=label, fill=TEXT)
-            draw.text((x + tile[0], y - 44), effort, font=meta, fill=ACCENT, anchor='ra')
+            model_text = model + ' 6.2'
+            draw.text((x, y - 47), model_text, font=label, fill=TEXT)
+            effort_x = x + draw.textlength(model_text, font=label) + 16
+            draw.text((effort_x, y - 44), effort, font=meta, fill=ACCENT)
             with Image.open(source_path(scene) / f'{i:04}.jpg') as img:
                 frame.paste(img.resize(tile, Image.Resampling.LANCZOS), (x, y))
         x = 32
